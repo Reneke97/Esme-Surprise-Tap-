@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f0fdf4">
+<title>Christmas Blessings & Surprises 🎄</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    padding: 24px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #f0fdf4, #fff7ed, #fdf2f8); color: #1f2937;
+  }
+  .card {
+    width: min(600px, 100%); background: rgba(255,255,255,.96); border-radius: 28px;
+    padding: 34px 26px; text-align: center; box-shadow: 0 18px 60px rgba(0,0,0,.12);
+  }
+  .emoji { font-size: 64px; }
+  h1 { margin: 14px 0 8px; font-size: clamp(28px, 7vw, 38px); }
+  .sub { color: #6b7280; margin: 0 auto 24px; line-height: 1.5; }
+  .result {
+    min-height: 180px; display: grid; place-items: center; border: 2px dashed #bbd8c3;
+    border-radius: 20px; padding: 24px; margin: 22px 0; background: #fbfffc;
+  }
+  .result h2 { margin: 0 0 12px; font-size: 24px; }
+  .result p { margin: 0; font-size: 18px; line-height: 1.55; }
+  .small { margin-top: 18px; color: #9ca3af; font-size: 12px; }
+  .spin { animation: pop .45s ease; }
+  @keyframes pop { 0% { transform: scale(.96); opacity: .25; } 100% { transform: scale(1); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="emoji" aria-hidden="true">🎄</div>
+  <h1>Christmas Blessings &amp; Surprises</h1>
+  <p class="sub">A little Christmas joy, a little faith, and a random surprise just for you. ✨</p>
+  <section id="result" class="result" aria-live="polite">
+    <div><h2>🎁 Choosing your surprise...</h2><p>Just a moment!</p></div>
+  </section>
+  <div class="small"><span id="count">0</span> possible surprises • randomly selected</div>
+</main>
+<script>
+const surprises = [
+  // Bible verses (King James Version, public domain)
+  ["📖 A PROMISE OF PEACE", "\"Peace I leave with you, my peace I give unto you.\" — John 14:27 (KJV)"],
+  ["✨ BE STRONG", "\"Be strong and of a good courage; be not afraid.\" — Joshua 1:9 (KJV)"],
+  ["💛 YOU ARE LOVED", "\"We love him, because he first loved us.\" — 1 John 4:19 (KJV)"],
+  ["🌟 TRUST THE LORD", "\"Trust in the LORD with all thine heart; and lean not unto thine own understanding.\" — Proverbs 3:5 (KJV)"],
+  ["🕊️ CAST YOUR CARES", "\"Casting all your care upon him; for he careth for you.\" — 1 Peter 5:7 (KJV)"],
+  ["🙏 GIVE THANKS", "\"In every thing give thanks: for this is the will of God in Christ Jesus concerning you.\" — 1 Thessalonians 5:18 (KJV)"],
+  ["💪 GOD IS YOUR STRENGTH", "\"I can do all things through Christ which strengtheneth me.\" — Philippians 4:13 (KJV)"],
+  ["🌈 NEW MERCIES", "\"They are new every morning: great is thy faithfulness.\" — Lamentations 3:23 (KJV)"],
+  ["❤️ LOVE ONE ANOTHER", "\"Love one another, as I have loved you.\" — John 15:12 (KJV)"],
+  ["🌿 REST FOR YOUR SOUL", "\"Come unto me, all ye that labour and are heavy laden, and I will give you rest.\" — Matthew 11:28 (KJV)"],
+  ["⭐ LET YOUR LIGHT SHINE", "\"Let your light so shine before men, that they may see your good works.\" — Matthew 5:16 (KJV)"],
+  ["🙏 PRAY WITHOUT CEASING", "\"Pray without ceasing.\" — 1 Thessalonians 5:17 (KJV)"],
+  ["🎁 THE GREATEST GIFT", "\"For God so loved the world, that he gave his only begotten Son.\" — John 3:16 (KJV)"],
+  ["🌻 GOD'S GOODNESS", "\"O taste and see that the LORD is good: blessed is the man that trusteth in him.\" — Psalm 34:8 (KJV)"],
+  ["🕯️ A LIGHT IN THE DARK", "\"The LORD is my light and my salvation; whom shall I fear?\" — Psalm 27:1 (KJV)"],
+  ["💐 A GENTLE REMINDER", "\"Be ye kind one to another, tenderhearted, forgiving one another.\" — Ephesians 4:32 (KJV)"],
+  ["🌤️ DO NOT WORRY", "\"Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself.\" — Matthew 6:34 (KJV)"],
+  ["🛡️ GOD IS WITH YOU", "\"Fear thou not; for I am with thee: be not dismayed; for I am thy God.\" — Isaiah 41:10 (KJV)"],
+  ["🎶 MAKE A JOYFUL NOISE", "\"Make a joyful noise unto the LORD, all ye lands.\" — Psalm 100:1 (KJV)"],
+  ["💖 LOVE NEVER FAILS", "\"Charity never faileth.\" — 1 Corinthians 13:8 (KJV)"],
+
+  // Christian encouragement
+  ["💛 A LITTLE ENCOURAGEMENT", "You do not have to have everything figured out to take the next faithful step. God can meet you right where you are."],
+  ["🌱 GROWING IN GRACE", "Growth takes time. Give yourself the same patience and kindness you would offer someone you love."],
+  ["🕊️ PEACE OVER PRESSURE", "Take a breath. You are allowed to pause, pray, and begin again."],
+  ["✨ SMALL ACTS, BIG LOVE", "A kind word, a listening ear, or a helping hand can reflect Christ's love in a beautiful way."],
+  ["🙏 A QUICK PRAYER", "Take a moment to thank God for one good thing from this year."],
+  ["🌟 YOU MATTER", "You are not valuable because of what you achieve. You are worthy of love, kindness, and care."],
+  ["🎄 CHRISTMAS REMINDER", "Christmas points us back to Jesus: God's gift of hope, peace, and love."],
+  ["💐 BLESS SOMEONE", "Think of someone who encouraged you this year. Tell them what their kindness meant to you."],
+  ["🌈 HOPE FOR TOMORROW", "A difficult season is not the whole story. Keep making room for hope."],
+  ["❤️ CHOOSE KINDNESS", "You may never know how much a small act of kindness means to someone. Do it anyway."],
+  ["🕯️ BE A LITTLE LIGHT", "Who could use encouragement today? Send them a message or spend a few minutes listening."],
+  ["🙌 GRATITUDE MOMENT", "Name three things you are grateful to God for this year. Big or small, they count."],
+  ["🌿 REST IS GOOD", "You are a person, not a productivity machine. Rest and receive this moment with gratitude."],
+  ["🤍 GRACE FOR TODAY", "You do not need to be perfect to be loved. Give yourself grace, and offer it to others too."],
+  ["🎁 SHARE THE JOY", "The best gifts are not always wrapped. Your time, attention, and kindness are gifts too."],
+
+  // Family-friendly challenges and conversation starters
+  ["🎤 CHRISTMAS CAROL CHALLENGE", "Sing one line from a Christmas carol. Everyone else can guess the song!"],
+  ["🎄 CHRISTMAS THIS OR THAT", "Real tree or artificial tree? Explain your choice like it's a very serious debate."],
+  ["🍪 FESTIVE FAVOURITE", "What's your favourite Christmas food, and who makes it best?"],
+  ["🎬 CHRISTMAS MOVIE VOTE", "Name your favourite Christmas movie. Everyone must vote for the ultimate winner."],
+  ["🎁 BEST GIFT STORY", "Tell everyone about a gift you received that you still remember."],
+  ["😂 FESTIVE CONFESSION", "What's the funniest thing that has ever gone wrong at a celebration?"],
+  ["🎶 NAME THAT CAROL", "Hum a Christmas carol without saying the words. Let someone guess it."],
+  ["🧠 CHRISTMAS QUIZ", "Without looking it up, name three things the wise men brought to Jesus."],
+  ["🌟 ONE WORD FOR THE YEAR", "Choose one word to describe your year. Tell the group why you chose it."],
+  ["🥳 TWO TRUTHS AND A LIE", "Share two true things and one lie about yourself. Let everyone guess the lie."],
+  ["🎭 FESTIVE ACTING", "Act out wrapping a very awkward present. Everyone else guesses what you're doing."],
+  ["🎵 YOUR LIFE'S THEME SONG", "What song would play as you walked into this Christmas party?"],
+  ["🍫 SWEET OR SALTY", "Choose your Christmas snack team: sweet or salty. Convince the others you're right."],
+  ["📸 PHOTO MEMORY", "Share a favourite happy memory from this year, if you'd like to."],
+  ["🧩 QUICK ROUND", "Name five things associated with Christmas in ten seconds. Go!"],
+  ["🎅 SANTA'S QUESTION", "If you could ask Santa one completely ridiculous question, what would it be?"],
+  ["🌍 DREAM TRIP", "If you could take your family anywhere for Christmas, where would you go?"],
+  ["💬 GOOD NEWS", "Share one good thing that happened to you this year."],
+  ["🎲 WOULD YOU RATHER", "Would you rather decorate the whole house or cook the entire Christmas meal?"],
+  ["🕺 DANCE BREAK", "Do your best five-second festive dance. Enthusiasm matters more than talent."],
+  ["🎨 IMAGINARY GIFT", "If you could give everyone here one non-material gift, what would it be?"],
+  ["🤔 FRIENDLY DEBATE", "When should Christmas music officially start: November, December, or all year?"],
+  ["🎄 DECORATION AWARD", "What is the most unusual Christmas decoration you've ever seen?"],
+  ["🧁 BAKE-OFF QUESTION", "Homemade Christmas pudding, trifle, or something else? Make your case."],
+
+  // Kindness and name-based prompts (Bjorn is a baby; keep baby interactions gentle and parent-approved)
+  ["🤗 HUG DELIVERY", "If they're comfortable with it, give Esme a hug or tell her something you appreciate about her."],
+  ["💛 KINDNESS FOR FRIKKIE", "Tell Frikkie one thing you appreciate about him. Keep it genuine!"],
+  ["👏 TERTIUS APPRECIATION", "Give Tertius a sincere compliment. Bonus points if it's about something specific."],
+  ["🌷 ALICIA'S MOMENT", "Ask Alicia what made her smile recently, and listen to her answer."],
+  ["👶 BABY BJORN", "Send Bjorn a gentle smile or wave. Ask his parent before picking him up or giving him a cuddle."],
+  ["🤗 HUG OR HIGH FIVE", "Choose someone who is comfortable with it and offer a hug, high five, or warm compliment."],
+  ["💌 SECRET APPRECIATION", "Tell someone here one little thing they do that makes people feel welcome."],
+  ["🫶 PASS THE KINDNESS", "Thank someone for something small they did. Then invite them to thank someone else."],
+  ["😊 ESMe SMILE MISSION", "See if you can make Esme smile with a kind word or a silly joke."],
+  ["🎉 FRIKKIE'S CHOICE", "Ask Frikkie to choose the next Christmas song, if he wants to."],
+  ["🌟 BJORN'S FAN CLUB", "Give baby Bjorn a friendly wave from a comfortable distance and let his parent lead."],
+  ["💐 ALICIA'S COMPLIMENT", "Give Alicia a kind, sincere compliment—no teasing allowed!"],
+  ["😄 TERTIUS' CHALLENGE", "Ask Tertius to tell the group a favourite funny memory, if he feels like sharing."],
+  ["❤️ FAMILY CIRCLE", "Look around and silently choose one person you're grateful to have in your life."],
+  ["🤍 A MOMENT OF PRAYER", "If the group is comfortable, offer a short prayer of thanks for the people gathered here."],
+  ["🫂 COMFORT COUNTS", "Offer a hug only if the other person wants one. A smile or kind word counts just as much."],
+
+  // Light-hearted silly surprises
+  ["🦌 REINDEER MODE", "Give your best reindeer impression for three seconds. No sound effects required—but encouraged."],
+  ["🥔 CHRISTMAS POTATO", "You have been appointed Official Christmas Potato. Your duties are to relax and enjoy the food."],
+  ["🎩 VERY IMPORTANT PERSON", "You are now the party's Minister of Good Vibes. Your first duty: compliment someone."],
+  ["🧦 MYSTERY SOCK", "Invent a completely ridiculous name for a Christmas elf. The group gets to vote."],
+  ["🎁 INVISIBLE PRESENT", "Mime opening the worst present imaginable. Let everyone guess what it is."],
+  ["🦥 SLOW-MOTION CHALLENGE", "Say 'Merry Christmas' in the slowest, most dramatic voice you can manage."],
+  ["🎄 TREE POSE", "Strike your best Christmas tree pose for three seconds—only if you feel comfortable doing it."],
+  ["😂 LAUGHING MATTERS", "Tell a clean joke or make up a silly Christmas pun. Groans count as success."],
+  ["✨ SPREAD SOME SPARKLE", "Choose someone and tell them one thing that makes them a blessing to others."],
+  ["🎉 JOY UNLOCKED", "Your only task right now is to enjoy the people, the food, and this moment. Merry Christmas!"]
+];
+
+document.getElementById('count').textContent = surprises.length;
+let last = -1;
+
+function reveal() {
+  let i;
+  do {
+    i = Math.floor(Math.random() * surprises.length);
+  } while (surprises.length > 1 && i === last);
+
+  last = i;
+  const [heading, message] = surprises[i];
+  const result = document.getElementById('result');
+  result.classList.remove('spin');
+  void result.offsetWidth;
+  result.classList.add('spin');
+  result.innerHTML = `<div><h2>${heading}</h2><p>${message}</p></div>`;
+}
+
+window.addEventListener('load', () => {
+  window.setTimeout(reveal, 500);
+});
+</script>
+</body>
+</html>
