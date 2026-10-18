@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f0fdf4">
-<title>Christmas Blessings & Surprises 🎄</title>
+<title>Esme's Surprise Taps ❤️</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -33,9 +33,9 @@
 </head>
 <body>
 <main class="card">
-  <div class="emoji" aria-hidden="true">🎄</div>
-  <h1>Christmas Blessings &amp; Surprises</h1>
-  <p class="sub">A little Christmas joy, a little faith, and a random surprise just for you. ✨</p>
+  <div class="emoji" aria-hidden="true">❤️</div>
+  <h1>Esme's Surprise Taps  &amp; Surprises</h1>
+  <p class="sub">A little joy, a little faith, and a random surprise just for you. ✨</p>
   <section id="result" class="result" aria-live="polite">
     <div><h2>🎁 Choosing your surprise...</h2><p>Just a moment!</p></div>
   </section>
@@ -43,18 +43,18 @@
 </main>
 <script>
 const surprises = [
-  // Bible verses (King James Version, public domain)
-  ["📖 A PROMISE OF PEACE", "\"Peace I leave with you, my peace I give unto you.\" — John 14:27 (KJV)"],
-  ["✨ BE STRONG", "\"Be strong and of a good courage; be not afraid.\" — Joshua 1:9 (KJV)"],
-  ["💛 YOU ARE LOVED", "\"We love him, because he first loved us.\" — 1 John 4:19 (KJV)"],
-  ["🌟 TRUST THE LORD", "\"Trust in the LORD with all thine heart; and lean not unto thine own understanding.\" — Proverbs 3:5 (KJV)"],
-  ["🕊️ CAST YOUR CARES", "\"Casting all your care upon him; for he careth for you.\" — 1 Peter 5:7 (KJV)"],
+  // Bible verses 
+  ["📖 A PROMISE OF PEACE", "\"Vrede laat Ek vir julle na, my vrede gee Ek aan julle; nie soos die wêreld gee, gee Ek aan julle nie. Laat julle hart nie ontsteld word en bang wees nie.\" — Johanned 14:27 (AFR53)"],
+  ["✨ BE STRONG", "\"Het Ek jou nie beveel nie: Wees sterk en vol moed, wees nie bevrees of verskrik nie; want die Here jou God is met jou, oral waar jy heengaan.\" — Josua 1:9 (AFR53)"],
+  ["💛 YOU ARE LOVED", "\"Ons het Hom lief, omdat Hy ons eerste liefgehad het.\" — 1 Johannes 4:19 (AFR53)"],
+  ["🌟 TRUST THE LORD", "\"Vertrou op die Here met jou hele hart en steun nie op jou eie insig nie.\" — Spreuke 3:5 (AFR53)"],
+  ["🕊️ CAST YOUR CARES", "\"Give your worries to God, because He cares for you.\" — 1 Peter 5:7 (ESV)"],
   ["🙏 GIVE THANKS", "\"In every thing give thanks: for this is the will of God in Christ Jesus concerning you.\" — 1 Thessalonians 5:18 (KJV)"],
-  ["💪 GOD IS YOUR STRENGTH", "\"I can do all things through Christ which strengtheneth me.\" — Philippians 4:13 (KJV)"],
-  ["🌈 NEW MERCIES", "\"They are new every morning: great is thy faithfulness.\" — Lamentations 3:23 (KJV)"],
-  ["❤️ LOVE ONE ANOTHER", "\"Love one another, as I have loved you.\" — John 15:12 (KJV)"],
-  ["🌿 REST FOR YOUR SOUL", "\"Come unto me, all ye that labour and are heavy laden, and I will give you rest.\" — Matthew 11:28 (KJV)"],
-  ["⭐ LET YOUR LIGHT SHINE", "\"Let your light so shine before men, that they may see your good works.\" — Matthew 5:16 (KJV)"],
+  ["💪 GOD IS YOUR STRENGTH", "\"I can do all things through Christ which strengthens me.\" — Philippians 4:13 (KJV)"],
+  ["🌈 NEW MERCIES", "\""God's mercies are new every morning; His faithfulness never ends.\" — Lamentations 3:23 (ESV)"],
+  ["❤️ LOVE ONE ANOTHER", "\"Dít is my gebod, dat julle mekaar moet liefhê net soos Ek julle liefgehad het.\" — Johannes 15:12 (AFR53)"],
+  ["🌿 REST FOR YOUR SOUL", "\"Kom na My toe, almal wat vermoeid en belas is, en Ek sal julle rus gee.\" — Matteus 11:28 (AFR53)"],
+  ["⭐ LET YOUR LIGHT SHINE", "\"Laat jou goeie dade skyn sodat ander God kan verheerlik.\" — Matteus 5:16 (AFR53)"],
   ["🙏 PRAY WITHOUT CEASING", "\"Pray without ceasing.\" — 1 Thessalonians 5:17 (KJV)"],
   ["🎁 THE GREATEST GIFT", "\"For God so loved the world, that he gave his only begotten Son.\" — John 3:16 (KJV)"],
   ["🌻 GOD'S GOODNESS", "\"O taste and see that the LORD is good: blessed is the man that trusteth in him.\" — Psalm 34:8 (KJV)"],
@@ -108,27 +108,40 @@ const surprises = [
   ["🎄 DECORATION AWARD", "What is the most unusual Christmas decoration you've ever seen?"],
   ["🧁 BAKE-OFF QUESTION", "Homemade Christmas pudding, trifle, or something else? Make your case."],
 
-  // Kindness and name-based prompts (Bjorn is a baby; keep baby interactions gentle and parent-approved)
-  ["🤗 HUG DELIVERY", "If they're comfortable with it, give Esme a hug or tell her something you appreciate about her."],
-  ["💛 KINDNESS FOR FRIKKIE", "Tell Frikkie one thing you appreciate about him. Keep it genuine!"],
-  ["👏 TERTIUS APPRECIATION", "Give Tertius a sincere compliment. Bonus points if it's about something specific."],
-  ["🌷 ALICIA'S MOMENT", "Ask Alicia what made her smile recently, and listen to her answer."],
-  ["👶 BABY BJORN", "Send Bjorn a gentle smile or wave. Ask his parent before picking him up or giving him a cuddle."],
-  ["🤗 HUG OR HIGH FIVE", "Choose someone who is comfortable with it and offer a hug, high five, or warm compliment."],
-  ["💌 SECRET APPRECIATION", "Tell someone here one little thing they do that makes people feel welcome."],
-  ["🫶 PASS THE KINDNESS", "Thank someone for something small they did. Then invite them to thank someone else."],
-  ["😊 ESMe SMILE MISSION", "See if you can make Esme smile with a kind word or a silly joke."],
-  ["🎉 FRIKKIE'S CHOICE", "Ask Frikkie to choose the next Christmas song, if he wants to."],
-  ["🌟 BJORN'S FAN CLUB", "Give baby Bjorn a friendly wave from a comfortable distance and let his parent lead."],
-  ["💐 ALICIA'S COMPLIMENT", "Give Alicia a kind, sincere compliment—no teasing allowed!"],
-  ["😄 TERTIUS' CHALLENGE", "Ask Tertius to tell the group a favourite funny memory, if he feels like sharing."],
-  ["❤️ FAMILY CIRCLE", "Look around and silently choose one person you're grateful to have in your life."],
-  ["🤍 A MOMENT OF PRAYER", "If the group is comfortable, offer a short prayer of thanks for the people gathered here."],
-  ["🫂 COMFORT COUNTS", "Offer a hug only if the other person wants one. A smile or kind word counts just as much."],
+  // Kindness and name-based prompts 
+  ["🤗 HUG DELIVERY","Go give Esme a big Christmas hug! Bonus points for adding a dramatic 'Merry Christmas!'"],
+  ["💛 FRIKKIE APPRECIATION","Give Frikkie a big hug and tell him one thing that makes him special to the family."],
+  ["👏 TERTIUS TIME","Give Tertius a hug and challenge him to tell everyone his funniest Christmas memory."],
+  ["🌷 ALICIA'S MOMENT","Give Alicia a big hug and ask her what her favourite Christmas memory is."],
+  ["🤗 HUG ATTACK","Pick someone in the family and give them the biggest, most dramatic Christmas hug ever!"],
+  ["💌 FAMILY LOVE","Tell someone in the family why you're glad they're part of your life. Hugs are highly encouraged! ❤️"],
+  ["🫶 PASS THE HUG","Give someone a hug, then nominate them to spread the Christmas love to someone else!"],
+  ["😊 ESME'S CHALLENGE","Make Esme laugh without tickling her. You may use terrible jokes, silly faces or embarrassing dance moves."],
+  ["🎉 FRIKKIE'S DJ MOMENT","Frikkie gets to choose the next song! Everyone else has to sing along."],
+  ["💐 ALICIA'S COMPLIMENT","Give Alicia three compliments before she can escape! 😂❤️"],
+  ["😄 TERTIUS' CHALLENGE","Challenge Tertius to a silly dance-off. Loser has to sing a Christmas carol!"],
+  ["❤️ FAMILY CIRCLE","Give someone you love a hug and tell them one thing you're grateful for this Christmas."],
+  ["🤍 CHRISTMAS PRAYER","Gather everyone for a short prayer of thanks for family, God's goodness and the blessing of being together."],
+  ["🫂 GROUP HUG!","It's time for a family group hug! Squeeze in close and remind everyone they're loved. ❤️🎄"]
+  ["👶 BABY BJORN","Everyone give Bjorn their biggest, happiest smile! Let's see if we can make him smile too. 🥰"],
+  ["🌟 BJORN'S FAN CLUB","Bjorn is clearly the youngest VIP at this Christmas party. Everyone say hello to the little superstar! ⭐"],
+  ["🤗 BJORN CUDDLE TIME","Whoever is holding Bjorn gets an extra-special Christmas cuddle. Babies make everything sweeter! ❤️"],
+  ["😂 BJORN'S BIG DEBUT","If Bjorn could talk today, what do you think his first Christmas wish would be?"],
+  ["🎅 SANTA'S LITTLE HELPER","Bjorn has officially been appointed the cutest Christmas helper. His only job is being adorable! 🎄"],
+  ["💛 A LITTLE BLESSING","Look at baby Bjorn and remember how precious life's little blessings are. Say a little prayer for his beautiful future. 🙏"],
+  ["📸 CHRISTMAS MEMORY","Time for a cute Christmas photo with Bjorn! Capture a little memory for the family album. 🎄"],
+  ["🍼 THE REAL BOSS","Let's be honest: Bjorn is probably the one running this family. Everyone else just pays the bills! 😂"],
+  ["🌎 MARIUS ACROSS THE OCEAN","Marius might be in America, but he's still part of this family Christmas! Everyone send him some love from South Africa. ❤️🇿🇦🇺🇸"],
+  ["📱 CHRISTMAS CALL","It's time to send Marius a Christmas message or video! Let him know we're thinking of him, even from thousands of kilometres away. ❤️"],
+  ["💌 A MESSAGE FOR MARIUS","Everyone think of one thing you love or appreciate about Marius. Send him a message so he knows he's missed and loved! 🥹❤️"],
+  ["🫶 FAMILY IS FAMILY","No matter how far apart we are, family is always family. Let's raise a glass and send Marius our love all the way to America! ❤️"],
+  ["😂 MARIUS, YOU'RE MISSING OUT!","Take a funny Christmas family photo or video and send it to Marius. Make sure he sees exactly what he's missing! 😂🎅"],
+  ["🙏 A PRAYER FOR MARIUS","Let's say a little prayer for Marius — for God's protection, guidance, happiness and blessings while he's so far from home. 🤍🙏"],
+  ["🌟 MARIUS MEMORY LANE","Share a favourite memory of Marius. Bonus points if it makes everyone laugh! 😂❤️"],
 
   // Light-hearted silly surprises
-  ["🦌 REINDEER MODE", "Give your best reindeer impression for three seconds. No sound effects required—but encouraged."],
-  ["🥔 CHRISTMAS POTATO", "You have been appointed Official Christmas Potato. Your duties are to relax and enjoy the food."],
+  ["🐓 CHICKEN MODE", "Give your best chicken impression for three seconds. No sound effects required—but encouraged."],
+  ["🥔 OFFICIAL POTATO", "You have been appointed Official Potato. Your duties are to relax and enjoy the food."],
   ["🎩 VERY IMPORTANT PERSON", "You are now the party's Minister of Good Vibes. Your first duty: compliment someone."],
   ["🧦 MYSTERY SOCK", "Invent a completely ridiculous name for a Christmas elf. The group gets to vote."],
   ["🎁 INVISIBLE PRESENT", "Mime opening the worst present imaginable. Let everyone guess what it is."],
